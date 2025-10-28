@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "modelName": {
+      "type": "string"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "insertStub": {
+      "type": "boolean"
+    },
+    "indentSize": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "scripts": {
+      "$ref": "scripts.json#/definitions/scripts"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["modelName", "enabled", "insertStub", "indentSize", "scripts"]
+}

@@ -1,0 +1,102 @@
+{
+  "definitions": {
+    "concr_scr": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+
+        "version": {
+          "type": "string"
+        },
+
+        "description": {
+          "type": "string"
+        },
+
+        "enabled": {
+          "type": "boolean"
+        },
+
+        "conditions": {
+          "$ref": "script_cond.json#/definitions/full_condition"
+        },
+
+        "code": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "name",
+        "version",
+        "description",
+        "conditions",
+        "code"
+      ]
+    },
+
+    "meta_scr": {
+      "type": "object",
+      "properties": {
+        "tag": {
+          "type": "string"
+        },
+
+        "id": {
+          "type": "string"
+        },
+
+        "storage": {
+          "$ref": "#/definitions/storage"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["tag", "id"]
+    },
+
+    "storage": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+
+        "version": {
+          "type": "string"
+        },
+
+        "description": {
+          "type": "string"
+        },
+
+        "enabled": {
+          "type": "boolean"
+        },
+
+        "conditions": {
+          "$ref": "script_cond.json#/definitions/full_condition"
+        },
+
+        "code": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "scr": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/concr_scr"
+        },
+        {
+          "$ref": "#/definitions/meta_scr"
+        }
+      ]
+    }
+  },
+
+  "$ref": "#/definitions/scr"
+}
