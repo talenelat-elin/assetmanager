@@ -18,9 +18,9 @@ class JSHighlighter(QSyntaxHighlighter):
         is_night_mode = mw.pm.night_mode()
 
         keywordFormat = QTextCharFormat()
-        keywordFormat.setForeground(Qt.cyan if is_night_mode else Qt.blue)
-        keywordFormat.setFontStyleHint(QFont.Monospace)
-        keywordFormat.setFontWeight(QFont.Bold)
+        keywordFormat.setForeground(Qt.GlobalColor.cyan if is_night_mode else Qt.GlobalColor.blue)
+        keywordFormat.setFontStyleHint(QFont.StyleHint.Monospace)
+        keywordFormat.setFontWeight(QFont.Weight.Bold)
 
         keywordPatterns = [
             "\\bfunction\\b",
@@ -71,36 +71,36 @@ class JSHighlighter(QSyntaxHighlighter):
         ]
 
         classFormat = QTextCharFormat()
-        classFormat.setFontWeight(QFont.Bold)
-        classFormat.setFontStyleHint(QFont.Monospace)
-        classFormat.setForeground(Qt.magenta if is_night_mode else Qt.darkMagenta)
+        classFormat.setFontWeight(QFont.Weight.Bold)
+        classFormat.setFontStyleHint(QFont.StyleHint.Monospace)
+        classFormat.setForeground(Qt.magenta if is_night_mode else Qt.GlobalColor.darkMagenta)
         self.highlightingRules.append((QRegularExpression("\\bQ[A-Za-z]+\\b"), classFormat))
 
         singleLineCommentFormat = QTextCharFormat()
-        singleLineCommentFormat.setFontStyleHint(QFont.Monospace)
+        singleLineCommentFormat.setFontStyleHint(QFont.StyleHint.Monospace)
         singleLineCommentFormat.setForeground(Qt.red if is_night_mode else Qt.darkRed)
         self.highlightingRules.append((QRegularExpression("//[^\n]*"), singleLineCommentFormat))
 
         multiLineCommentFormat = QTextCharFormat()
-        multiLineCommentFormat.setFontStyleHint(QFont.Monospace)
+        multiLineCommentFormat.setFontStyleHint(QFont.StyleHint.Monospace)
         multiLineCommentFormat.setForeground(Qt.red if is_night_mode else Qt.darkRed)
         self.multiLineCommentFormat = multiLineCommentFormat
 
         numberFormat = QTextCharFormat()
-        numberFormat.setFontStyleHint(QFont.Monospace)
+        numberFormat.setFontStyleHint(QFont.StyleHint.Monospace)
         numberFormat.setForeground(Qt.yellow if is_night_mode else Qt.darkYellow)
         self.highlightingRules.append((QRegularExpression("\\b\\d+\\b"), numberFormat))
 
         quotationFormat = QTextCharFormat()
         quotationFormat.setForeground(Qt.green if is_night_mode else Qt.darkGreen)
-        quotationFormat.setFontStyleHint(QFont.Monospace)
+        quotationFormat.setFontStyleHint(QFont.StyleHint.Monospace)
         self.highlightingRules.append((QRegularExpression('".*"'), quotationFormat))
         self.highlightingRules.append((QRegularExpression("'.*'"), quotationFormat))
         self.highlightingRules.append((QRegularExpression("`.*`"), quotationFormat))
 
         functionFormat = QTextCharFormat()
         functionFormat.setFontItalic(True)
-        functionFormat.setFontStyleHint(QFont.Monospace)
+        functionFormat.setFontStyleHint(QFont.StyleHint.Monospace)
         functionFormat.setForeground(Qt.lightGray if is_night_mode else Qt.gray)
         self.highlightingRules.append(
             (QRegularExpression("\\b[A-Za-z0-9_]+(?=\\()"), functionFormat)
@@ -149,13 +149,13 @@ class HTMLHighlighter(QSyntaxHighlighter):
 
         keywordFormat = QTextCharFormat()
         keywordFormat.setForeground(Qt.cyan if is_night_mode else Qt.blue)
-        keywordFormat.setFontStyleHint(QFont.Monospace)
-        keywordFormat.setFontWeight(QFont.Bold)
+        keywordFormat.setFontStyleHint(QFont.StyleHint.Monospace)
+        keywordFormat.setFontWeight(QFont.Weight.Bold)
 
         self.highlightingRules = []
 
         singleLineCommentFormat = QTextCharFormat()
-        singleLineCommentFormat.setFontStyleHint(QFont.Monospace)
+        singleLineCommentFormat.setFontStyleHint(QFont.StyleHint.Monospace)
         singleLineCommentFormat.setForeground(Qt.red if is_night_mode else Qt.darkRed)
         self.highlightingRules.append((QRegularExpression("\<.*\>"), singleLineCommentFormat))
 
@@ -190,31 +190,31 @@ class HTMLHighlighter(QSyntaxHighlighter):
         )
 
         multiLineCommentFormat = QTextCharFormat()
-        multiLineCommentFormat.setFontStyleHint(QFont.Monospace)
+        multiLineCommentFormat.setFontStyleHint(QFont.StyleHint.Monospace)
         multiLineCommentFormat.setForeground(Qt.red if is_night_mode else Qt.darkRed)
         self.multiLineCommentFormat = multiLineCommentFormat
 
         numberFormat = QTextCharFormat()
-        numberFormat.setFontStyleHint(QFont.Monospace)
+        numberFormat.setFontStyleHint(QFont.StyleHint.Monospace)
         numberFormat.setForeground(Qt.yellow if is_night_mode else Qt.darkYellow)
         self.highlightingRules.append((QRegularExpression("\\b\\d+\\b"), numberFormat))
 
         quotationFormat = QTextCharFormat()
         quotationFormat.setForeground(Qt.green if is_night_mode else Qt.darkGreen)
-        quotationFormat.setFontStyleHint(QFont.Monospace)
+        quotationFormat.setFontStyleHint(QFont.StyleHint.Monospace)
         self.highlightingRules.append((QRegularExpression('".*"'), quotationFormat))
         self.highlightingRules.append((QRegularExpression("'.*'"), quotationFormat))
         self.highlightingRules.append((QRegularExpression("`.*`"), quotationFormat))
 
         selfTagFormat = QTextCharFormat()
-        # selfTagFormat.setFontWeight(QFont.Bold)
-        selfTagFormat.setFontStyleHint(QFont.Monospace)
+        # selfTagFormat.setFontWeight(QFont.Weight.Bold)
+        selfTagFormat.setFontStyleHint(QFont.StyleHint.Monospace)
         selfTagFormat.setForeground(Qt.lightGray if is_night_mode else Qt.gray)
         self.highlightingRules.append((QRegularExpression("\{\{[^<]+\}\}"), selfTagFormat))
 
         tagFormat = QTextCharFormat()
-        # tagFormat.setFontWeight(QFont.Bold)
-        tagFormat.setFontStyleHint(QFont.Monospace)
+        # tagFormat.setFontWeight(QFont.Weight.Bold)
+        tagFormat.setFontStyleHint(QFont.StyleHint.Monospace)
         tagFormat.setForeground(Qt.magenta if is_night_mode else Qt.darkMagenta)
         tagRegex = QRegularExpression("\{\{%.+\}\}")
         tagRegex.setMinimal(True)

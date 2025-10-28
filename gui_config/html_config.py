@@ -62,14 +62,13 @@ class HTMLConfig(QDialog):
     def initEditor(self, editor):
         font = editor.document().defaultFont()
         font.setFamily("Courier New")
-        font.setStyleHint(QFont.Monospace)
-        font.setWeight(QFont.Medium)
+        font.setStyleHint(QFont.StyleHint.Monospace)
+        font.setWeight(QFont.Weight.Medium)
         font.setFixedPitch(True)
         font.setPointSize(14)
-
         editor.setFont(font)
 
-        self.highlighter = HTMLHighlighter(editor.document())
+       #self.highlighter = HTMLHighlighter(editor.document())
 
     def setupUi(self, concrete_script: ConcreteHTML):
         self.ui.nameLineEdit.setText(concrete_script.name)

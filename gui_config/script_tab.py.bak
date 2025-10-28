@@ -101,7 +101,7 @@ class ScriptTab(QWidget):
         for i, text in enumerate(args):
             label = QLabel()
             label.setText(text)
-            label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            label.setAlignment(Qt.AlignCenter)
 
             self.ui.scriptsTable.setCellWidget(row, i, label)
 
